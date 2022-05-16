@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userDp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="60dp">
+
+            <ImageView
+                android:id="@+id/dpImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="user profile"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/listUserName"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/userDp"
+            android:text="Jaivignesh"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/listUserStatus"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_toRightOf="@id/userDp"
+            android:text="At work"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/callAvailable"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/listUserName"
+            android:src="@drawable/ic_call" />
+
+        <ImageView
+            android:id="@+id/callRequest"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/callAvailable"
+            android:src="@drawable/ic_req_call" />
+    </RelativeLayout>
+
+</RelativeLayout>

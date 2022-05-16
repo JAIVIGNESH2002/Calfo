@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "899925381280",
+    "firebase_url": "https://canicall-default-rtdb.firebaseio.com",
+    "project_id": "canicall",
+    "storage_bucket": "canicall.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899925381280:android:95f4d808878b1183c3f9c5",
+        "android_client_info": {
+          "package_name": "com.example.canicall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899925381280-o38u0ufi7fh086s8hjpf4mdkajn8uo8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbV28ZreUs16pO7gg7Uonv71B4fuVoX90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899925381280-o38u0ufi7fh086s8hjpf4mdkajn8uo8d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
