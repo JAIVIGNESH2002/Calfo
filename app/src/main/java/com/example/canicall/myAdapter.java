@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder>{
-    private List<userDetails> userDetails;
+    public List<userDetails> userDetails;
     public myAdapter(List<userDetails> userDetails){
         this.userDetails=userDetails;
     }

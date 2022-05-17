@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".codeGenerator">
+    tools:context=".codeGenerator"
+    android:background="#FFC107">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/qr_easy"
+        android:text="Easy share "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/showCode"
+        app:layout_constraintEnd_toEndOf="@+id/showCode"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/showCode" />
 
     <ImageView
         android:id="@+id/showCode"
@@ -16,15 +29,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.498" />
-
-    <Button
-        android:id="@+id/saveCon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="SAVE CONTACT"
-        app:layout_constraintEnd_toEndOf="@+id/showCode"
-        app:layout_constraintStart_toStartOf="@+id/showCode"
-        app:layout_constraintTop_toBottomOf="@+id/showCode" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/91995/AndroidStudioProjects/canIcall2/app/src/main/res/drawable/ic_smile.xml" value="0.2475" />
+        <entry key="..\:/Users/91995/AndroidStudioProjects/canIcall2/app/src/main/res/drawable/qr_easy.xml" value="0.2475" />
         <entry key="..\:/Users/91995/AndroidStudioProjects/canIcall2/app/src/main/res/layout/activity_code_generator.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/91995/AndroidStudioProjects/canIcall2/app/src/main/res/layout/activity_code_scanner.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/91995/AndroidStudioProjects/canIcall2/app/src/main/res/layout/activity_get_det.xml" value="0.2" />

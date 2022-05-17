@@ -4,45 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.getDet">
+    tools:context=".getDet">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="Welcome to calfo "
+        android:drawableRight="@drawable/ic_smile"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <CheckBox
+        android:id="@+id/agreeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="I agree to the terms and conditions"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/userNo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/userNo"
+        app:layout_constraintTop_toBottomOf="@+id/userNo" />
 
     <Button
         android:id="@+id/saveBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="272dp"
+        android:layout_marginBottom="232dp"
+        android:backgroundTint="#FFC107"
         android:text="CONFIRM"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/userNo"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/userNo" />
-
 
     <EditText
         android:id="@+id/userNo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="284dp"
         android:layout_marginEnd="25dp"
         android:hint="Enter your mob number"
+        android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/saveBt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.877"
-        android:inputType="number"
-        />
+        app:layout_constraintVertical_bias="0.117" />
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:hint="Enter your name"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="25dp"
+        android:hint="Enter your name"
+        android:minHeight="48dp"
         app:layout_constraintBottom_toTopOf="@+id/userNo"
         app:layout_constraintEnd_toEndOf="@+id/userNo"
         app:layout_constraintStart_toStartOf="@+id/userNo"

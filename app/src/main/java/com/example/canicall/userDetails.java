@@ -1,11 +1,11 @@
 package com.example.canicall;
 
 public class userDetails {
-    private int imageView;
-    private String nameOfUser;
-    private String userStatus;
+    public int imageView;
+    public String nameOfUser;
+    public String userStatus;
 
-    userDetails(int imageView, String nameOfUser, String userStatus){
+    public userDetails(int imageView, String nameOfUser, String userStatus){
         this.imageView = imageView;
         this.nameOfUser = nameOfUser;
         this.userStatus = userStatus;

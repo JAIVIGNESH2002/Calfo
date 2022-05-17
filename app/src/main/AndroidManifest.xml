@@ -12,12 +12,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CanIcall.NoActionBar">
+        android:theme="@style/Theme.CanIcall">
         <activity
             android:name=".result"
             android:exported="false" />
         <activity
-            android:name=".ui.main.getDet"
+            android:name=".getDet"
             android:exported="false" />
         <activity
             android:name=".codeGenerator"

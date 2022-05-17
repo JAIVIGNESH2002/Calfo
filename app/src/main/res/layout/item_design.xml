@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/listUserName"
-            android:layout_width="180dp"
+            android:layout_width="165dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/listUserStatus"
-            android:layout_width="180dp"
+            android:layout_width="165dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
@@ -51,7 +51,7 @@
             android:layout_width="45dp"
             android:layout_height="60dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/listUserName"
             android:src="@drawable/ic_call" />
 
@@ -60,7 +60,8 @@
             android:layout_width="45dp"
             android:layout_height="60dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/callAvailable"
             android:src="@drawable/ic_req_call" />
     </RelativeLayout>

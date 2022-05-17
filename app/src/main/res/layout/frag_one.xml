@@ -5,41 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/numView"
+    <EditText
+        android:id="@+id/customStatus"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
+        android:hint="Enter the status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/stsUptBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/editBut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
-
-    <Button
-        android:id="@+id/updateBt"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="184dp"
-        android:text="UPDATE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editBut"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editBut"
-        app:layout_constraintTop_toBottomOf="@+id/editBut"
-        app:layout_constraintVertical_bias="0.821" />
-
-    <Button
-        android:id="@+id/editBut"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
-        android:text="Edit DETAILS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/numView"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@+id/numView" />
-
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#FFC107"
+        android:text="update"
+        app:layout_constraintEnd_toEndOf="@+id/customStatus"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/customStatus"
+        app:layout_constraintTop_toBottomOf="@+id/customStatus" />
 </androidx.constraintlayout.widget.ConstraintLayout>

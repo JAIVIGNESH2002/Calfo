@@ -1,5 +1,7 @@
 package com.example.canicall;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.canicall.ui.main.fragTwo;
@@ -22,6 +24,11 @@ import android.widget.SearchView;
 
 import com.example.canicall.ui.main.SectionsPagerAdapter;
 import com.example.canicall.databinding.ActivityMainBinding;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,38 +36,31 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public static List<userDetails> userDetailsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        SharedPreferences oneTimeAct = getSharedPreferences("checkTime",MODE_PRIVATE);
+        String notFirstTime = oneTimeAct.getString("NotFirstRun","default");
+        if(notFirstTime.equals("yes")){
+            setContentView(binding.getRoot());
+        }else{
+            SharedPreferences.Editor editr = oneTimeAct.edit();
+            editr.putString("NotFirstRun","yes");
+            editr.apply();
+            Intent getDetails = new Intent(MainActivity.this,getDet.class);
+            startActivity(getDetails);
+            finishAfterTransition();
+
+        }
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        initData();
-        Toolbar toolbar = findViewById(R.id.toolBar);
-        setSupportActionBar(toolbar);
-
-
     }
-    private void initData() {
-        userDetailsList = new ArrayList<>();
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User1", "At work"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User2", "At work"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User3", "Buzy"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User4", "Away"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User5", "Idle"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User6", "Buzy"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User7", "Work"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User8", "Buzy"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User9", "Travelling"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User10", "Buzy"));
-        userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, "User11", "Buzy"));
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

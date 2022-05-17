@@ -5,17 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
-import com.example.canicall.ui.main.getDet;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
@@ -39,6 +37,9 @@ public class codeScanner extends AppCompatActivity {
         scanView = findViewById(R.id.scan_view);
         codeScanner = new CodeScanner(this,scanView);
         checkPerm();
+        SharedPreferences pref = getSharedPreferences(getDet.SHARED_PREFS,MODE_PRIVATE);
+        String userNumFromPref = pref.getString(getDet.number,"default");
+        String userNameFromPref = pref.getString(getDet.name,"default");
         codeScanner.setDecodeCallback(new DecodeCallback() {
             @Override
             public void onDecoded(@NonNull Result result) {
@@ -51,28 +52,33 @@ public class codeScanner extends AppCompatActivity {
                                 .getReference()
                                 .child(uNum)
                                 .child("friend")
-                                .setValue(getDet.userNum);
+                                .setValue(userNumFromPref);
                         FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child(getDet.userNum)
+                                .child(userNumFromPref)
                                 .child("friend")
                                 .setValue(uNum);
                         FirebaseDatabase.getInstance()
                                 .getReference()
-                                .child(getDet.userNum)
+                                .child(userNumFromPref)
                                 .child("fName")
                                 .setValue(uName);
                         FirebaseDatabase.getInstance()
                                 .getReference()
                                 .child(uNum)
                                 .child("fName")
-                                .setValue(getDet.userNameStr);
+                                .setValue(userNameFromPref);
 
                         FirebaseDatabase.getInstance()
                                 .getReference()
                                 .child(uNum)
                                 .child("modified")
                                 .setValue(true);
+                        FirebaseDatabase.getInstance()
+                                .getReference()
+                                .child(uNum)
+                                .child("friends")
+                                .child(userNumFromPref).setValue("yes");
                         arr=result.getText().toString().split(" ");
                         String resUserNum=arr[0];
                         String resUserName=arr[1];
