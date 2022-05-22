@@ -2,7 +2,11 @@ package com.example.canicall.ui.main;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.Manifest;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +19,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,12 +45,12 @@ import java.util.List;
 public class fragTwo extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
+    private static final int callReqCode = 2;
     public myAdapter adapter;
     String userNumFromPref;
     String userNameFromPref;
-    String friendNameTemp="";
-    String frndStatusTemp="";
-    userDetails obj;
+    String phNum;
+    public LinkedHashSet<String> frndNumbers = new LinkedHashSet<>();
     public static List<userDetails> userDetailsList;
     @Nullable
     @Override
@@ -66,6 +72,7 @@ public class fragTwo extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s:snapshot.getChildren()){
+                    frndNumbers.add(s.getKey());
                     DatabaseReference ofFrndNum = FirebaseDatabase.getInstance().getReference().child(s.getKey());
                     userDetails newUser = new userDetails();
                     ofFrndNum.addValueEventListener(new ValueEventListener() {
@@ -145,5 +152,33 @@ public class fragTwo extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new myAdapter(userDetailsList);
         recyclerView.setAdapter(adapter);
+        adapter.setOnCallClickListner(new myAdapter.onCallClickListener() {
+            @Override
+            public void onCallClick(int position) {
+                phNum = Arrays.asList(frndNumbers).get(position).toString();
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(getActivity(),new String[]{
+                            Manifest.permission.CALL_PHONE
+                    },callReqCode);
+                }else{
+                    startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phNum)));
+                }
+            }
+        });
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == callReqCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makeCall();
+            } else {
+                Toast.makeText(getActivity(), "Permission denied!", Toast.LENGTH_SHORT).show();
+            }
+        }
 }
+
+    private void makeCall() {
+        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+phNum)));
+    }
+    }

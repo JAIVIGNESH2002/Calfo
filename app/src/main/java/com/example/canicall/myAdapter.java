@@ -35,18 +35,38 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder>{
     public int getItemCount() {
         return userDetails.size();
     }
-
+    private onCallClickListener callListner;
+    public interface onCallClickListener{
+        public void onCallClick(int position);
+    }
+    public void setOnCallClickListner(onCallClickListener listner){
+        callListner = listner;
+    }
     public class myViewHolder extends RecyclerView.ViewHolder {
         private TextView userNameOnItem;
         private TextView userStatusOnItem;
         private ImageView userDpImage;
+        private ImageView callBtn;
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             userNameOnItem = itemView.findViewById(R.id.listUserName);
             userStatusOnItem = itemView.findViewById(R.id.listUserStatus);
             userDpImage = itemView.findViewById(R.id.dpImage);
+            callBtn = itemView.findViewById(R.id.callAvailable);
+            callBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(callListner!=null){
+                        int position = getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            callListner.onCallClick(position);
+                        }
+                    }
+                }
+            });
         }
+
 
         public void setData(int res, String nme, String userStats) {
             userDpImage.setImageResource(res);

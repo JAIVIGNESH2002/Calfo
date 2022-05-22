@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/listUserName"
-            android:layout_width="150dp"
+            android:layout_width="125dp"
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/listUserStatus"
-            android:layout_width="150dp"
+            android:layout_width="125dp"
             android:layout_height="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
@@ -47,27 +47,26 @@
             android:text="At work"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/avlTimeTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/callAvailable"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:text="Available at:"
-            android:textSize="15sp"
-            android:textStyle="bold"></TextView>
+        <!--        <TextView-->
+        <!--            android:id="@+id/avlTimeTv"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignStart="@+id/callAvailable"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            android:text="Available at:"-->
+        <!--            android:textSize="15sp"-->
+        <!--            android:textStyle="normal"></TextView>-->
 
         <TextView
             android:id="@+id/showTimeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/callAvailable"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="90dp"
-            android:layout_marginBottom="10dp"
+            android:layout_alignStart="@id/callRequest"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="30dp"
             android:text="9.45pm"
-            android:textSize="15sp"></TextView>
+            android:textSize="12sp"></TextView>
 
         <TextView
             android:layout_width="match_parent"
@@ -75,25 +74,25 @@
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:textSize="8dp"
-            android:text="--------------------------------------------------------------------------------------------------------------------------------------------" />
+            android:text="--------------------------------------------------------------------------------------------------------------------------------------------"
+            android:textSize="8dp" />
 
 
         <ImageView
             android:id="@+id/callAvailable"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="18dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="30dp"
             android:layout_toRightOf="@id/listUserName"
             android:src="@drawable/ic_call" />
 
         <ImageView
             android:id="@+id/callRequest"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="18dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/callAvailable"
             android:src="@drawable/ic_req_call" />

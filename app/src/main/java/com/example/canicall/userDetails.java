@@ -4,6 +4,7 @@ public class userDetails {
     private int imageView;
     private String UserName;
     private String status;
+    private String frndNumber;
 
     public userDetails(){
 //        this.imageView = imageView;
@@ -33,5 +34,13 @@ public class userDetails {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getFrndNumber() {
+        return frndNumber;
+    }
+
+    public void setFrndNumber(String frndNumber) {
+        this.frndNumber = frndNumber;
     }
 }
