@@ -14,6 +14,7 @@ import android.view.View;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.example.canicall.ui.main.fragTwo;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
@@ -79,6 +80,12 @@ public class codeScanner extends AppCompatActivity {
                                 .child(uNum)
                                 .child("friends")
                                 .child(userNumFromPref).setValue("yes");
+                        FirebaseDatabase.getInstance()
+                                .getReference()
+                                .child(userNumFromPref)
+                                .child("friends")
+                                .child(uNum).setValue("yes");
+                  //      new fragTwo().addNewUser(new userDetails(R.drawable.ic_launcher_background,uName,"idle"));
                         arr=result.getText().toString().split(" ");
                         String resUserNum=arr[0];
                         String resUserName=arr[1];
@@ -119,6 +126,7 @@ public class codeScanner extends AppCompatActivity {
             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
                 permissionToken.continuePermissionRequest();
             }
+
         }).check();
     }
 

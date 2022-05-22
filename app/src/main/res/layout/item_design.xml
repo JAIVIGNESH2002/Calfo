@@ -6,20 +6,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="95dp">
+        android:layout_height="98dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/userDp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             app:cardCornerRadius="60dp">
 
             <ImageView
                 android:id="@+id/dpImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="0dp"
                 android:contentDescription="user profile"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
@@ -27,40 +28,72 @@
 
         <TextView
             android:id="@+id/listUserName"
-            android:layout_width="165dp"
+            android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@id/userDp"
             android:text="Jaivignesh"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/listUserStatus"
-            android:layout_width="165dp"
+            android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
             android:layout_toRightOf="@id/userDp"
             android:text="At work"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/avlTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/callAvailable"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:text="Available at:"
+            android:textSize="15sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/showTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/callAvailable"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="90dp"
+            android:layout_marginBottom="10dp"
+            android:text="9.45pm"
+            android:textSize="15sp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="8dp"
+            android:text="--------------------------------------------------------------------------------------------------------------------------------------------" />
+
 
         <ImageView
             android:id="@+id/callAvailable"
             android:layout_width="45dp"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:layout_toRightOf="@id/listUserName"
             android:src="@drawable/ic_call" />
 
         <ImageView
             android:id="@+id/callRequest"
             android:layout_width="45dp"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@id/callAvailable"
             android:src="@drawable/ic_req_call" />

@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.canicall.ui.main.fragTwo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -130,6 +131,7 @@ public class codeGenerator extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.getValue().toString().equals("true")) {
                     FirebaseDatabase.getInstance().getReference().child(number2).child("modified").setValue(false);
+                   // new fragTwo().addNewUser(new userDetails(R.drawable.ic_launcher_background,fName,"Idle"));
 //                    FirebaseDatabase.getInstance().getReference().child(number2).child("friends").setValue(fName);
                     if (flag){ //To trigger the intent exactly once.
                         flag = false;

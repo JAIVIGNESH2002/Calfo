@@ -43,7 +43,16 @@ public class fragOne extends Fragment {
         SharedPreferences pref =getActivity().getSharedPreferences(getDet.SHARED_PREFS,MODE_PRIVATE);
         userNumFromPref = pref.getString(getDet.number,"default");
         userNameFromPref = pref.getString(getDet.name,"default");
-        FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("status").setValue("Idle");
+        SharedPreferences check = getActivity().getSharedPreferences("checkTime",MODE_PRIVATE);
+        String notFirstTime = check.getString("UserDisplayFirst","default");
+        if(notFirstTime.equals("yes")){
+           ;
+        }else{
+            FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("status").setValue("Idle");
+            SharedPreferences.Editor editr = check.edit();
+            editr.putString("UserDisplayFirst","yes");
+            editr.apply();
+        }
         status = getActivity().findViewById(R.id.customStatus);
         stsUpdateBt = getActivity().findViewById(R.id.stsUptBtn);
         stsUpdateBt.setOnClickListener(new View.OnClickListener() {
@@ -55,3 +64,4 @@ public class fragOne extends Fragment {
         });
     }
 }
+

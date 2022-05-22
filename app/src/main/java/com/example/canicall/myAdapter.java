@@ -3,14 +3,11 @@ package com.example.canicall;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -29,8 +26,8 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull myAdapter.myViewHolder holder, int position) {
         int res = userDetails.get(position).getImageView();
-        String nme = userDetails.get(position).getNameOfUser();
-        String userStats = userDetails.get(position).getUserStatus();
+        String nme = userDetails.get(position).getUserName();
+        String userStats = userDetails.get(position).getStatus();
         holder.setData(res,nme,userStats);
     }
 

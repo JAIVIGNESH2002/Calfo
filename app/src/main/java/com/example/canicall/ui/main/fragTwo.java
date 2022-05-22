@@ -32,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.nio.file.attribute.UserDefinedFileAttributeView;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class fragTwo extends Fragment {
@@ -40,16 +42,17 @@ public class fragTwo extends Fragment {
     public myAdapter adapter;
     String userNumFromPref;
     String userNameFromPref;
+    String friendNameTemp="";
+    String frndStatusTemp="";
+    userDetails obj;
     public static List<userDetails> userDetailsList;
     @Nullable
     @Override
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         SharedPreferences pref =getActivity().getSharedPreferences(getDet.SHARED_PREFS,MODE_PRIVATE);
         userNumFromPref = pref.getString(getDet.number,"default");
         userNameFromPref = pref.getString(getDet.name,"default");
-        FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("friends").child("friend1").setValue("yes");
-        FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("friends").child("friend2").setValue("yes");
-        FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("friends").child("friend3").setValue("yes");
         userDetailsList = new ArrayList<>();
         return inflater.inflate(R.layout.frag_two,container,false);
 
@@ -59,14 +62,37 @@ public class fragTwo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DatabaseReference fName = FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("friends");
-        DatabaseReference status = FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("status");
-        userDetailsList.add(new userDetails(R.drawable.ic_call,userNameFromPref,"Playing"));
         fName.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s:snapshot.getChildren()){
-                    userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, s.getKey().toString(), "At work"));
-                    adapter.notifyDataSetChanged();
+                    DatabaseReference ofFrndNum = FirebaseDatabase.getInstance().getReference().child(s.getKey());
+                    userDetails newUser = new userDetails();
+                    ofFrndNum.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot s : snapshot.getChildren()) {
+                                if(s.getKey().equals("UserName")){
+                                    newUser.setUserName(s.getValue().toString());
+//                                    Toast.makeText(getActivity(), s.getValue().toString(), Toast.LENGTH_SHORT).show();
+
+                                }else if(s.getKey().equals("status")) {
+//                                    Toast.makeText(getActivity(), s.getValue().toString(), Toast.LENGTH_SHORT).show();
+                                    newUser.setStatus(s.getValue().toString());
+                                }
+                            }
+                            userDetailsList.add(newUser);
+                            LinkedHashSet<userDetails> userSet = new LinkedHashSet<>(userDetailsList);
+                            userDetailsList.clear();
+                            userDetailsList.addAll(userSet);
+                            adapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
 
                 }
             }
@@ -76,21 +102,39 @@ public class fragTwo extends Fragment {
 
             }
         });
-        status.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getActivity(), "Changed", Toast.LENGTH_SHORT).show();
-                userDetailsList.add(new userDetails(R.drawable.ic_launcher_background, userNameFromPref, snapshot.getValue().toString()));
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         initRecyclerView();
     }
+//    private String getFriendName(DatabaseReference fNumberRef) {
+//        fNumberRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//               friendNameTemp = snapshot.getValue().toString();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        Toast.makeText(getActivity(), friendNameTemp, Toast.LENGTH_SHORT).show();
+//        return friendNameTemp;
+//
+//    }
+//    private String getFriendStatus(DatabaseReference fStatusRef){
+//        fStatusRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                frndStatusTemp = snapshot.getValue().toString();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        Toast.makeText(getActivity(), frndStatusTemp, Toast.LENGTH_SHORT).show();
+//        return frndStatusTemp;
+//    }
 //    private void initData() {
 //
 //    }

@@ -1,26 +1,37 @@
 package com.example.canicall;
 
 public class userDetails {
-    public int imageView;
-    public String nameOfUser;
-    public String userStatus;
+    private int imageView;
+    private String UserName;
+    private String status;
 
-    public userDetails(int imageView, String nameOfUser, String userStatus){
-        this.imageView = imageView;
-        this.nameOfUser = nameOfUser;
-        this.userStatus = userStatus;
+    public userDetails(){
+//        this.imageView = imageView;
+//        this.UserName = UserName;
+//        this.status = status;
     }
 
+    public void setImageView(int imageView) {
+        this.imageView = imageView;
+    }
+
+    public void setUserName(String UserName) {
+        this.UserName = UserName;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getImageView() {
         return imageView;
     }
 
-    public String getNameOfUser() {
-        return nameOfUser;
+    public String getUserName() {
+        return UserName;
     }
 
-    public String getUserStatus() {
-        return userStatus;
+    public String getStatus() {
+        return status;
     }
 }
