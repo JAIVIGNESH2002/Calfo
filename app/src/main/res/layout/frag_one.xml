@@ -5,27 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.7"
+        android:text="Calfo"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055" />
+
     <EditText
         android:id="@+id/customStatus"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
-        android:hint="Enter the status"
+        android:layout_marginTop="220dp"
+        android:hint="What's up?"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/timePickBtn"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_timer"
+        app:layout_constraintBottom_toBottomOf="@+id/customStatus"
+        app:layout_constraintStart_toEndOf="@+id/customStatus"
+        app:layout_constraintTop_toTopOf="@+id/customStatus"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/stsUptBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="180dp"
         android:backgroundTint="#FFC107"
         android:text="update"
-        app:layout_constraintEnd_toEndOf="@+id/customStatus"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintEnd_toEndOf="@+id/timePickBtn"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/customStatus"
         app:layout_constraintTop_toBottomOf="@+id/customStatus" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

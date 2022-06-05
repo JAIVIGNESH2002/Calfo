@@ -2,6 +2,7 @@ package com.example.canicall.ui.main;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,20 +13,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.canicall.R;
+import com.example.canicall.TimePicker;
 import com.example.canicall.getDet;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class fragOne extends Fragment {
+public class fragOne extends Fragment{
     private TextView numView;
     private String userNumber;
     private EditText status;
     private Button stsUpdateBt;
+    private Button tPick;
 
     String userNumFromPref;
     String userNameFromPref;
@@ -62,6 +67,16 @@ public class fragOne extends Fragment {
                 FirebaseDatabase.getInstance().getReference().child(userNumFromPref).child("status").setValue(stats);
             }
         });
+        tPick = getActivity().findViewById(R.id.timePickBtn);
+        tPick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment timePick = new TimePicker();
+                timePick.show(getActivity().getSupportFragmentManager(),"Pick a time");
+
+            }
+        });
     }
+
 }
 

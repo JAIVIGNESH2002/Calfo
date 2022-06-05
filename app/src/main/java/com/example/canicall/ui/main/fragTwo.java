@@ -52,6 +52,7 @@ public class fragTwo extends Fragment {
     String phNum;
     public LinkedHashSet<String> frndNumbers = new LinkedHashSet<>();
     public static List<userDetails> userDetailsList;
+    public static List<String> userNameList = new ArrayList<>();
     @Nullable
     @Override
 
@@ -73,6 +74,11 @@ public class fragTwo extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot s:snapshot.getChildren()){
                     frndNumbers.add(s.getKey());
+                    if(userNameList.contains(s.getKey())){
+                        continue;
+                    }else{
+                        userNameList.add(s.getKey());
+                    }
                     DatabaseReference ofFrndNum = FirebaseDatabase.getInstance().getReference().child(s.getKey());
                     userDetails newUser = new userDetails();
                     ofFrndNum.addValueEventListener(new ValueEventListener() {
@@ -81,6 +87,7 @@ public class fragTwo extends Fragment {
                             for(DataSnapshot s : snapshot.getChildren()) {
                                 if(s.getKey().equals("UserName")){
                                     newUser.setUserName(s.getValue().toString());
+
 //                                    Toast.makeText(getActivity(), s.getValue().toString(), Toast.LENGTH_SHORT).show();
 
                                 }else if(s.getKey().equals("status")) {
@@ -88,11 +95,12 @@ public class fragTwo extends Fragment {
                                     newUser.setStatus(s.getValue().toString());
                                 }
                             }
-                            userDetailsList.add(newUser);
-                            LinkedHashSet<userDetails> userSet = new LinkedHashSet<>(userDetailsList);
-                            userDetailsList.clear();
-                            userDetailsList.addAll(userSet);
-                            adapter.notifyDataSetChanged();
+
+                                userDetailsList.add(newUser);
+                                LinkedHashSet<userDetails> userSet = new LinkedHashSet<>(userDetailsList);
+                                userDetailsList.clear();
+                                userDetailsList.addAll(userSet);
+                                adapter.notifyDataSetChanged();
                         }
 
                         @Override

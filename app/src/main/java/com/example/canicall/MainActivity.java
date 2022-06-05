@@ -1,5 +1,6 @@
 package com.example.canicall;
 
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.canicall.ui.main.SectionsPagerAdapter;
 import com.example.canicall.databinding.ActivityMainBinding;
@@ -33,7 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
 
     private ActivityMainBinding binding;
 
@@ -82,5 +85,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+        Toast.makeText(getApplicationContext(),i+":"+i1,Toast.LENGTH_SHORT).show();
     }
 }
